@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
-import { Image, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
+import { Image, TouchableOpacity, View } from "react-native";
 
 export default function RootLayout() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -39,6 +39,30 @@ export default function RootLayout() {
                     tabBarIcon: ({ focused }) => (
                         <Image
                             source={require("../images/cart.png")}
+                            style={{ width: 28, height: 28, opacity: focused ? 1 : 0.5 }}
+                            resizeMode="contain"
+                        />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="AccountScreen"
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Image
+                            source={require("../images/accountlogo.svg")}
+                            style={{ width: 28, height: 28, opacity: focused ? 1 : 0.5 }}
+                            resizeMode="contain"
+                        />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="ProductScreen"
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Image
+                            source={require("../images/productlogo.svg")}
                             style={{ width: 28, height: 28, opacity: focused ? 1 : 0.5 }}
                             resizeMode="contain"
                         />

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import { Picker } from "@react-native-picker/picker";
-import styles from "../styles";
-import { useRouter } from "expo-router";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import styles from "../styles";
 
 const products = [
   { id: 1, title: "Red Printed T-Shirt", price: "₱750.00", image: require("./images/product-1.jpg"), rating: 4 },
@@ -58,30 +56,13 @@ export default function ProductScreen() {
         <TouchableOpacity onPress={() => router.push("/HomeScreen")}> 
           <Image source={require("./images/logo.png")} style={styles.footerLogo} />
         </TouchableOpacity>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <TouchableOpacity onPress={() => router.push("/CartScreen")}> 
-            <Image source={require("./images/cart.png")} style={{ width: 30, height: 30, marginRight: 8 }} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image source={require("./images/menu.png")} style={{ width: 32, height: 32 }} />
-          </TouchableOpacity>
-        </View>
+        
       </View>
       <ScrollView style={styles.container}>
         <View style={{ padding: 16 }}>
           {/* Header Row - vertical for mobile */}
           <Text style={{ fontSize: 22, fontWeight: "bold", marginBottom: 8 }}>All Products</Text>
-          <Picker
-            selectedValue={sort}
-            style={{ width: "100%", marginBottom: 16 }}
-            onValueChange={(itemValue: string) => setSort(itemValue)}
-          >
-            <Picker.Item label="Default Sorting" value="default" />
-            <Picker.Item label="Sort by Price" value="price" />
-            <Picker.Item label="Sort by Popularity" value="popularity" />
-            <Picker.Item label="Sort by Rating" value="rating" />
-            <Picker.Item label="Sort by Sale" value="sale" />
-          </Picker>
+          
 
           {/* Products Grid - 2 columns for mobile */}
           <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>

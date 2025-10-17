@@ -1,7 +1,7 @@
-import React from "react";
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
-import styles from "../styles";
 import { useRouter } from "expo-router";
+import React from "react";
+import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import styles from "../styles";
 
 
 export default function CartScreen() {
@@ -16,31 +16,12 @@ export default function CartScreen() {
     currency: "₱"
   };
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      {/* Stylish Navbar */}
-      <View style={[styles.menu, { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14, backgroundColor: '#ff523b', borderBottomLeftRadius: 16, borderBottomRightRadius: 16, elevation: 4 }]}> 
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Image source={require('../images/logo.png')} style={{ width: 40, height: 40, marginRight: 8 }} />
-          <Text style={{ fontWeight: "bold", fontSize: 22, color: '#fff', letterSpacing: 1 }}>RedStore</Text>
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
-          <TouchableOpacity onPress={() => router.push("/HomeScreen")}> 
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: '#fff' }}>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push("/ProductScreen")}> 
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: '#fff' }}>Products</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {/* About */}}> 
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: '#fff' }}>About</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {/* Contact */}}> 
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: '#fff' }}>Contact</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push("/")}> 
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: '#fff' }}>Account</Text>
-          </TouchableOpacity>
-          <Image source={require('../images/cart.png')} style={{ width: 28, height: 28, marginLeft: 8 }} />
-        </View>
+    <View style={{ flex: 1 }}>
+      {/* Navbar - always clickable */}
+      <View style={styles.menu}>
+        <TouchableOpacity onPress={() => router.push("/HomeScreen")}> 
+          <Image source={require("./images/logo.png")} style={styles.footerLogo} />
+        </TouchableOpacity>
       </View>
       <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
         {/* Cart Title */}

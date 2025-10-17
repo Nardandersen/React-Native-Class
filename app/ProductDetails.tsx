@@ -1,20 +1,19 @@
-import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, TextInput, ScrollView } from "react-native";
-import { Picker } from "@react-native-picker/picker";
-import styles from "../styles";
 import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import styles from "./styles";
 
 
 export default function ProductDetails() {
-  const [selectedImage, setSelectedImage] = useState(require("../images/gallery-1.jpg"));
+  const [selectedImage, setSelectedImage] = useState(require("./images/gallery-1.jpg"));
   const [quantity, setQuantity] = useState("1");
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedSize, setSelectedSize] = useState<string>("");
   const smallImages = [
-    require("../images/gallery-1.jpg"),
-    require("../images/gallery-2.jpg"),
-    require("../images/gallery-3.jpg"),
-    require("../images/gallery-4.jpg"),
+    require("./images/gallery-1.jpg"),
+    require("./images/gallery-2.jpg"),
+    require("./images/gallery-3.jpg"),
+    require("./images/gallery-4.jpg"),
   ];
   const router = useRouter();
   return (

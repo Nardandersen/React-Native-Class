@@ -1,9 +1,9 @@
 // HomeScreen.tsx
-import React, { useState } from "react";
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import styles from "../styles";
 import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import styles from "../styles";
 export default function HomeScreen() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
@@ -14,14 +14,6 @@ export default function HomeScreen() {
         <TouchableOpacity onPress={() => router.push("/HomeScreen")}> 
            <Image source={require("../images/logo.png")} style={styles.footerLogo} />
         </TouchableOpacity>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <TouchableOpacity onPress={() => router.push("/CartScreen")}> 
-             <Image source={require("../images/cart.png")} style={{ width: 30, height: 30, marginRight: 8 }} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setMenuOpen(!menuOpen)}>
-             <Image source={require("../images/menu.png")} style={{ width: 32, height: 32 }} />
-          </TouchableOpacity>
-        </View>
       </View>
       <ScrollView style={styles.container}>
         {/* Hero Section - vertical stack for mobile */}
