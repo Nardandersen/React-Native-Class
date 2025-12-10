@@ -373,18 +373,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 
-
-
-
-
   accountPage: {
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "center",
-  paddingVertical: 40,
-  backgroundColor: "#fff",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 40,
+    backgroundColor: "#fff",
   },
-
 
   cartInfo: {
     padding: 16,
@@ -418,7 +413,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
 
-    /* ---------------- HomeScreen Specific ---------------- */
+  /* ---------------- HomeScreen Specific ---------------- */
   banner: {
     width: "100%",
     height: 200,
@@ -494,8 +489,24 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#ff523b",
   },
-
-
+  paginationButton: {
+    marginHorizontal: 8,
+    borderWidth: 1,
+    borderColor: "#ff523b",
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 1,
+  },
+  paginationText: {
+    fontSize: 16,
+    color: "#000",
+    fontWeight: "bold",
+  },
 });
 
 export default styles;

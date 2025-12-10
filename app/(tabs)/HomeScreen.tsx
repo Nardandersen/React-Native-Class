@@ -1,6 +1,6 @@
 // HomeScreen.tsx
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "../styles";
@@ -15,32 +15,32 @@ export default function HomeScreen() {
            <Image source={require("../images/logo.png")} style={styles.footerLogo} />
         </TouchableOpacity>
       </View>
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { paddingBottom: 24 }]} contentContainerStyle={{ padding: 24 }}>
         {/* Hero Section - vertical stack for mobile */}
-        <View style={{ alignItems: "center", padding: 16 }}>
+        <View style={{ alignItems: "center", padding: 24, marginBottom: 32, backgroundColor: "#f9f9f9", borderRadius: 16, shadowColor: "#000", shadowOpacity: 0.07, shadowRadius: 6, elevation: 2 }}>
           <Image source={require("./images/image1.png")} style={[styles.productImg, { marginBottom: 16 }]} />
-          <Text style={{ fontSize: 28, fontWeight: "bold", marginBottom: 8, textAlign: "center" }}>
+          <Text style={{ fontSize: 28, fontWeight: "bold", marginBottom: 8, textAlign: "center", letterSpacing: 1 }}>
             {`Give Your Workout\nA New Style!`}
           </Text>
-          <Text style={{ fontSize: 16, color: "#555", marginBottom: 12, textAlign: "center" }}>
+          <Text style={{ fontSize: 16, color: "#555", marginBottom: 16, textAlign: "center", lineHeight: 22 }}>
             Success isn't always about greatness. It's about consistency. Consistent hard work gains success. Greatness will come.
           </Text>
-          <TouchableOpacity style={styles.btn} onPress={() => router.push("/ProductScreen")}> 
-            <Text style={styles.btnText}>Explore Now →</Text>
+          <TouchableOpacity style={[styles.btn, { height: 56, borderRadius: 12, backgroundColor: "#ff523b" }]} onPress={() => router.push("/ProductScreen")}> 
+            <Text style={[styles.btnText, { fontSize: 20, color: "#fff" }]}>Explore Now →</Text>
           </TouchableOpacity>
         </View>
 
         {/* Featured Categories - vertical stack */}
-        <Text style={styles.sectionTitle}>Featured Categories</Text>
-        <View style={{ flexDirection: "row", justifyContent: "space-around", marginBottom: 16 }}>
-          <Image source={require("./images/category-1.jpg")} style={styles.catImg} />
-          <Image source={require("./images/category-2.jpg")} style={styles.catImg} />
-          <Image source={require("./images/category-3.jpg")} style={styles.catImg} />
+        <Text style={[styles.sectionTitle, { marginBottom: 16 }]}>Featured Categories</Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-around", marginBottom: 32 }}>
+          <Image source={require("./images/category-1.jpg")} style={[styles.catImg, { borderRadius: 12 }]} />
+          <Image source={require("./images/category-2.jpg")} style={[styles.catImg, { borderRadius: 12 }]} />
+          <Image source={require("./images/category-3.jpg")} style={[styles.catImg, { borderRadius: 12 }]} />
         </View>
 
         {/* Featured Products - vertical grid */}
-        <Text style={styles.sectionTitle}>Featured Products</Text>
-        <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>
+        <Text style={[styles.sectionTitle, { marginBottom: 16 }]}>Featured Products</Text>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", marginBottom: 32 }}>
           {[1,2,3,4].map((i) => {
             const product = [
               {img: require("./images/product-1.jpg"), name: "Red Printed T-Shirt", price: "₱750.00", rating: 4, details: "Red Printed T-Shirt by HRX"},
@@ -49,10 +49,10 @@ export default function HomeScreen() {
               {img: require("./images/product-4.jpg"), name: "The POLO", price: "₱750.00", rating: 2.5, details: "Roadster Watch"},
             ][i-1];
             return (
-              <TouchableOpacity key={i} style={{ width: "48%", marginBottom: 16 }} onPress={() => router.push("/ProductDetails")}> 
-                <Image source={product.img} style={styles.productImg} />
-                <Text style={styles.productTitle}>{product.name}</Text>
-                <View style={styles.rating}>
+              <TouchableOpacity key={i} style={{ width: "48%", marginBottom: 24, backgroundColor: "#fff", borderRadius: 12, padding: 16, shadowColor: "#000", shadowOpacity: 0.05, shadowRadius: 4, elevation: 1 }} onPress={() => router.push("/ProductDetails")}> 
+                <Image source={product.img} style={[styles.productImg, { marginBottom: 12, borderRadius: 8 }]} />
+                <Text style={[styles.productTitle, { marginBottom: 8, textAlign: "center" }]}>{product.name}</Text>
+                <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 8 }}>
                   {[1,2,3,4,5].map((star) => (
                     <Icon
                       key={star}
@@ -63,7 +63,7 @@ export default function HomeScreen() {
                     />
                   ))}
                 </View>
-                <Text style={styles.productPrice}>{product.price}</Text>
+                <Text style={[styles.productPrice, { textAlign: "center" }]}>{product.price}</Text>
               </TouchableOpacity>
             );
           })}
@@ -159,17 +159,16 @@ export default function HomeScreen() {
           </View>
         </ScrollView>
 
-        {/* Footer - vertical stack */}
-        <View style={styles.footer}>
-          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#fff", textAlign: "center" }}>Download Our App</Text>
-          <Text style={{ color: "#bbb", marginBottom: 8, textAlign: "center" }}>Download App for Android and IOS mobile phone</Text>
-          <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 12 }}>
-            <Image source={require("./images/play-store.png")} style={styles.footerLogo} />
-            <Image source={require("./images/app-store.png")} style={styles.footerLogo} />
+        {/* Footer - decluttered, spaced */}
+        <View style={[styles.footer, { marginTop: 48, paddingVertical: 32, paddingHorizontal: 16, backgroundColor: "#111", borderRadius: 16 }]}>
+          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#fff", textAlign: "center", marginBottom: 12 }}>Download Our App</Text>
+          <Text style={{ color: "#bbb", marginBottom: 12, textAlign: "center" }}>Download App for Android and IOS mobile phone</Text>
+          <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 16 }}>
+            <Image source={require("../images/play-store.png")} style={{ width: 32, height: 32, marginRight: 8 }} />
+            <Image source={require("../images/app-store.png")} style={{ width: 32, height: 32 }} />
           </View>
-          <Image source={require("./images/logo-white.png")} style={styles.footerLogo} />
-          <Text style={styles.footerText}>Our Purpose Is To Sustainably Make The Pleasure and Benefits of Sports Accessible to the Many</Text>
-          <Text style={styles.copyright}>Copyright 2020 - Nard Epico</Text>
+          <Text style={[styles.footerText, { color: '#fff', textAlign: 'center', marginBottom: 12 }]}>Our Purpose Is To Sustainably Make The Pleasure and Benefits of Sports Accessible to the Many</Text>
+          <Text style={[styles.copyright, { color: '#bbb', textAlign: 'center' }]}>Copyright 2020 - Nard Epico</Text>
         </View>
       </ScrollView>
     </View>

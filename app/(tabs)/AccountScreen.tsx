@@ -1,13 +1,51 @@
-
-
-import React, { useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from "expo-router";
-import { View, ScrollView, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { useState } from "react";
+import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "../styles";
 
 export default function AccountScreen() {
   const [tab, setTab] = useState("login");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
+
+  const handleLogin = async () => {
+    try {
+      const storedUser = await AsyncStorage.getItem(username);
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        if (user.password === password) {
+          alert(`Welcome back, ${user.username}!`);
+          router.push("/HomeScreen");
+        } else {
+          alert("Invalid password.");
+        }
+      } else {
+        alert("User not found.");
+      }
+    } catch (error) {
+      alert("An error occurred during login.");
+    }
+  };
+
+  const handleRegister = async () => {
+    try {
+      const existingUser = await AsyncStorage.getItem(username);
+      if (existingUser) {
+        alert("User already exists.");
+      } else {
+        const user = { username, email, password };
+        await AsyncStorage.setItem(username, JSON.stringify(user));
+        alert("Registration successful!");
+        setTab("login");
+      }
+    } catch (error) {
+      alert("An error occurred during registration.");
+    }
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <ScrollView style={styles.container}>
@@ -35,14 +73,18 @@ export default function AccountScreen() {
                     placeholder="Username"
                     style={[styles.formInput, { fontSize: 18, height: 48, marginBottom: 12 }]}
                     placeholderTextColor="#888"
+                    value={username}
+                    onChangeText={setUsername}
                   />
                   <TextInput
                     placeholder="Password"
                     style={[styles.formInput, { fontSize: 18, height: 48, marginBottom: 12 }]}
                     placeholderTextColor="#888"
                     secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
                   />
-                  <TouchableOpacity style={[styles.btn, { height: 48, borderRadius: 8, marginBottom: 8 }]} onPress={() => router.push('/HomeScreen')}>
+                  <TouchableOpacity style={[styles.btn, { height: 48, borderRadius: 8, marginBottom: 8 }]} onPress={handleLogin}>
                     <Text style={[styles.btnText, { fontSize: 20 }]}>Login</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => {/* handle forgot password */}}>
@@ -57,19 +99,25 @@ export default function AccountScreen() {
                     placeholder="Username"
                     style={[styles.formInput, { fontSize: 18, height: 48, marginBottom: 12 }]}
                     placeholderTextColor="#888"
+                    value={username}
+                    onChangeText={setUsername}
                   />
                   <TextInput
                     placeholder="Email"
                     style={[styles.formInput, { fontSize: 18, height: 48, marginBottom: 12 }]}
                     placeholderTextColor="#888"
+                    value={email}
+                    onChangeText={setEmail}
                   />
                   <TextInput
                     placeholder="Password"
                     style={[styles.formInput, { fontSize: 18, height: 48, marginBottom: 12 }]}
                     placeholderTextColor="#888"
                     secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
                   />
-                  <TouchableOpacity style={[styles.btn, { height: 48, borderRadius: 8, marginBottom: 8 }]} onPress={() => {/* handle register */}}>
+                  <TouchableOpacity style={[styles.btn, { height: 48, borderRadius: 8, marginBottom: 8 }]} onPress={handleRegister}>
                     <Text style={[styles.btnText, { fontSize: 20 }]}>Register</Text>
                   </TouchableOpacity>
                 </View>

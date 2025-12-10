@@ -1,5 +1,4 @@
 import { useRouter } from "expo-router";
-import React from "react";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "../styles";
 
@@ -23,19 +22,19 @@ export default function CartScreen() {
           <Image source={require("./images/logo.png")} style={styles.footerLogo} />
         </TouchableOpacity>
       </View>
-      <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
+      <ScrollView style={[styles.container, { paddingBottom: 24 }]} contentContainerStyle={{ padding: 24 }}>
         {/* Cart Title */}
-        <Text style={{ fontSize: 28, fontWeight: 'bold', marginBottom: 24, color: '#222', textAlign: 'center', letterSpacing: 1 }}>Your Cart</Text>
+        <Text style={{ fontSize: 28, fontWeight: 'bold', marginBottom: 32, color: '#222', textAlign: 'center', letterSpacing: 1 }}>Your Cart</Text>
         {/* Product Card - decluttered, vertical stack on mobile */}
-        <View style={{ backgroundColor: '#fff', borderRadius: 16, padding: 20, marginBottom: 24, shadowColor: '#000', shadowOpacity: 0.07, shadowRadius: 6, elevation: 2 }}>
+        <View style={{ backgroundColor: '#fff', borderRadius: 16, padding: 24, marginBottom: 32, shadowColor: '#000', shadowOpacity: 0.07, shadowRadius: 6, elevation: 2 }}>
           <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-            <Image source={product.image} style={{ width: 100, height: 100, borderRadius: 12, marginBottom: 12 }} />
-            <Text style={{ fontSize: 22, fontWeight: 'bold', marginBottom: 4, textAlign: 'center' }}>{product.name}</Text>
-            <Text style={{ fontSize: 15, color: '#888', marginBottom: 4, textAlign: 'center' }}>Price: {product.currency}{product.price.toFixed(2)}</Text>
+            <Image source={product.image} style={{ width: 100, height: 100, borderRadius: 12, marginBottom: 16 }} />
+            <Text style={{ fontSize: 22, fontWeight: 'bold', marginBottom: 8, textAlign: 'center' }}>{product.name}</Text>
+            <Text style={{ fontSize: 15, color: '#888', marginBottom: 8, textAlign: 'center' }}>Price: {product.currency}{product.price.toFixed(2)}</Text>
             <TouchableOpacity>
-              <Text style={{ color: '#ff523b', fontSize: 15, marginBottom: 8, textAlign: 'center' }}>Remove</Text>
+              <Text style={{ color: '#ff523b', fontSize: 16, marginBottom: 12, textAlign: 'center' }}>Remove</Text>
             </TouchableOpacity>
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 4 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 8 }}>
               <TextInput
                 style={{ borderWidth: 1, borderColor: '#eee', borderRadius: 8, width: 48, height: 36, textAlign: 'center', fontSize: 16, marginRight: 8 }}
                 value={String(product.quantity)}
@@ -48,14 +47,14 @@ export default function CartScreen() {
           </View>
         </View>
         {/* Divider */}
-        <View style={{ height: 1, backgroundColor: '#eee', marginBottom: 32 }} />
+        <View style={{ height: 1, backgroundColor: '#eee', marginBottom: 40 }} />
         {/* Total Section - decluttered */}
-        <View style={{ backgroundColor: '#f9f9f9', borderRadius: 12, padding: 20, marginBottom: 32, alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.04, shadowRadius: 4, elevation: 1 }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginBottom: 10 }}>
+        <View style={{ backgroundColor: '#f9f9f9', borderRadius: 12, padding: 24, marginBottom: 40, alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.04, shadowRadius: 4, elevation: 1 }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginBottom: 16 }}>
             <Text style={{ fontSize: 17, color: '#222' }}>Subtotal</Text>
             <Text style={{ fontSize: 17, color: '#222' }}>{product.currency}788.10</Text>
           </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginBottom: 10 }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginBottom: 16 }}>
             <Text style={{ fontSize: 17, color: '#222' }}>Tax</Text>
             <Text style={{ fontSize: 17, color: '#222' }}>{product.currency}35.00</Text>
           </View>
@@ -64,18 +63,18 @@ export default function CartScreen() {
             <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#ff523b' }}>{product.currency}823.10</Text>
           </View>
         </View>
-        <TouchableOpacity style={[styles.btn, { height: 48, borderRadius: 8, marginBottom: 40, backgroundColor: '#ff523b' }]} onPress={() => {/* handle checkout */}}>
+        <TouchableOpacity style={[styles.btn, { height: 56, borderRadius: 12, marginBottom: 48, backgroundColor: '#ff523b' }]} onPress={() => {/* handle checkout */}}>
           <Text style={[styles.btnText, { fontSize: 20, color: '#fff' }]}>Proceed To Checkout</Text>
         </TouchableOpacity>
         {/* Footer - decluttered, spaced */}
-        <View style={[styles.footer, { marginTop: 40, paddingVertical: 24, paddingHorizontal: 8, backgroundColor: '#111', borderRadius: 16 }]}>
-          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#fff", textAlign: "center", marginBottom: 8 }}>Download Our App</Text>
-          <Text style={{ color: "#bbb", marginBottom: 8, textAlign: "center" }}>Download App for Android and IOS mobile phone</Text>
-          <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 12 }}>
+        <View style={[styles.footer, { marginTop: 48, paddingVertical: 32, paddingHorizontal: 16, backgroundColor: '#111', borderRadius: 16 }]}>
+          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#fff", textAlign: "center", marginBottom: 12 }}>Download Our App</Text>
+          <Text style={{ color: "#bbb", marginBottom: 12, textAlign: "center" }}>Download App for Android and IOS mobile phone</Text>
+          <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 16 }}>
             <Image source={require('../images/play-store.png')} style={{ width: 32, height: 32, marginRight: 8 }} />
             <Image source={require('../images/app-store.png')} style={{ width: 32, height: 32 }} />
           </View>
-          <Text style={[styles.footerText, { color: '#fff', textAlign: 'center', marginBottom: 8 }]}>Our Purpose Is To Sustainably Make The Pleasure and Benefits of Sports Accessible to the Many</Text>
+          <Text style={[styles.footerText, { color: '#fff', textAlign: 'center', marginBottom: 12 }]}>Our Purpose Is To Sustainably Make The Pleasure and Benefits of Sports Accessible to the Many</Text>
           <Text style={[styles.copyright, { color: '#bbb', textAlign: 'center' }]}>Copyright 2020 - Nard Epico</Text>
         </View>
       </ScrollView>

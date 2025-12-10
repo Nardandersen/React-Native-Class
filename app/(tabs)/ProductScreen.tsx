@@ -18,8 +18,6 @@ const products = [
   { id: 12, title: "NIKE TrackPants", price: "₱750.00", image: require("./images/product-12.jpg"), rating: 2.5 },
 ];
 
-// ...existing code...
-
 type ProductCardProps = {
   image: any;
   title: string;
@@ -108,12 +106,19 @@ export default function ProductScreen() {
           {/* Pagination - horizontal row */}
           <View style={{ flexDirection: "row", justifyContent: "center", marginVertical: 20 }}>
             {[1,2,3,4].map((num) => (
-              <TouchableOpacity key={num} style={{ marginHorizontal: 8 }} onPress={() => {/* handle pagination */}}>
-                <Text style={{ fontSize: 16 }}>{num}</Text>
+              <TouchableOpacity
+                key={num}
+                style={styles.paginationButton}
+                onPress={() => {/* handle pagination */}}
+              >
+                <Text style={styles.paginationText}>{num}</Text>
               </TouchableOpacity>
             ))}
-            <TouchableOpacity style={{ marginHorizontal: 8 }} onPress={() => {/* handle next page */}}>
-              <Text style={{ fontSize: 16 }}></Text>
+            <TouchableOpacity
+              style={styles.paginationButton}
+              onPress={() => {/* handle next page */}}
+            >
+              <Text style={styles.paginationText}>Next</Text>
             </TouchableOpacity>
           </View>
 
